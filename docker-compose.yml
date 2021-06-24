@@ -1,0 +1,50 @@
+version: "3.8"
+services:
+
+    standalone-router:
+        container_name: standalone_router
+        build:
+            context: .
+        volumes:
+            # Configuration file
+            - ./router-configuration/router.conf:/etc/qpid-dispatch/qdrouterd.conf
+            # Azure cert
+            - ./certificates/azure-ca.crt:/etc/pki/tls/certs/azure-ca.crt
+            # ROUTER CERT + KEY
+            - ./certificates/cert/tls.crt:/etc/pki/tls/certs/tls.crt
+            - ./certificates/cert/tls.key:/etc/pki/tls/private/tls.key
+        environment: 
+            - CERT_PASSWORD=Passw0rd
+        ports: 
+            - "8080:8080"
+            - "5672:5672"
+            
+    # publisher:
+    #     container_name: publisher
+    #     build:
+    #         context: ./publisher/simple-message-routed-publisher
+    #     environment:
+    #         - ROUTER_ADDRESS=standalone-router
+    #     depends_on:
+    #         - standalone-router
+    
+    # consumer:
+    #     container_name: consumer
+    #     build:
+    #         context: ./consumer/simple-message-routed-subscriber
+    #     environment:
+    #         - ROUTER_ADDRESS=standalone-router
+    #     depends_on:
+    #         - standalone-router
+    
+    # linkroute:
+    #     container_name: linkroute
+    #     build:
+    #         context: ./linkroute/simple-message-routed-subscriber
+    #     environment:
+    #         - ROUTER_ADDRESS=standalone-router
+    #     depends_on:
+    #         - standalone-router
+
+    
+      
