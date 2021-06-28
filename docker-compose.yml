@@ -19,14 +19,14 @@ services:
             - "8080:8080"
             - "5672:5672"
             
-    # publisher:
-    #     container_name: publisher
-    #     build:
-    #         context: ./publisher/simple-message-routed-publisher
-    #     environment:
-    #         - ROUTER_ADDRESS=standalone-router
-    #     depends_on:
-    #         - standalone-router
+    publisher:
+        container_name: publisher
+        build:
+            context: ./publisher/simple-message-routed-publisher
+        environment:
+            - ROUTER_ADDRESS=standalone-router
+        depends_on:
+            - standalone-router
     
     # consumer:
     #     container_name: consumer
