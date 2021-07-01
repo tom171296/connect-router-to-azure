@@ -11,7 +11,7 @@ namespace Simple_message_routed_publisher
         internal async Task Run()
         {
             // The publisher needs an address where it can publish to.
-            var publishAddress = "pubsub.your.own.address.here";
+            var publishAddress = "pubsub/your/own/address/here";
 
             // We need to define the address of our edge-router which to where the publisher should connect.
             var addressString = Environment.GetEnvironmentVariable("ROUTER_ADDRESS");

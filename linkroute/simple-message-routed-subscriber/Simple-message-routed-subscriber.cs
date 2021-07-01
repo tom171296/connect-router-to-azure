@@ -13,7 +13,7 @@ namespace simple_message_routed_subscriber
             Thread.Sleep(TimeSpan.FromSeconds(10));
 
             // The subscriber needs an address where it can subscribe to.
-            var amqpAddress = "topic-name/subscriptions/subscription-name";
+            var amqpAddress = "{queue-name}/{{topic-name}/subscriptions/subscription-name}";
 
             // We need to define the address of our edge-router which to where the subscriber should connect.
             var addressString = Environment.GetEnvironmentVariable("ROUTER_ADDRESS") ?? "localhost";

@@ -14,7 +14,7 @@ namespace simple_message_routed_subscriber
             // The address is build up following the guidelines on the wiki!
             // https://dev.azure.com/ns-topaas/CORTEX/_wiki/wikis/CORTEX.wiki/3485/Adresnaamgeving
             // It should at least contain the predefined prefix 'pubsub' followed by your application name.
-            var amqpAddress = "pubsub.from.asb.to.internal";
+            var amqpAddress = "pubsub/from/asb/to/internal";
 
             // We need to define the address of our edge-router which to where the subscriber should connect.
              var addressString = Environment.GetEnvironmentVariable("ROUTER_ADDRESS");
